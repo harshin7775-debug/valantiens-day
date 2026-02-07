@@ -58,10 +58,18 @@ document.addEventListener("DOMContentLoaded", () => {
         // Update Slider State
         updateSlider();
 
-        // Manual Navigation: Click anywhere on the slider to go next
+        // Manual Navigation: Click left/right side
         const sliderContainer = document.querySelector('.polaroid-slider');
-        sliderContainer.addEventListener('click', () => {
-            nextSlide();
+        sliderContainer.addEventListener('click', (e) => {
+            const rect = sliderContainer.getBoundingClientRect();
+            const x = e.clientX - rect.left; // x position within the element.
+            const width = rect.width;
+
+            if (x < width / 2) {
+                prevSlide();
+            } else {
+                nextSlide();
+            }
         });
     }
 
@@ -133,5 +141,33 @@ document.addEventListener("DOMContentLoaded", () => {
         updateSlider();
     }
 
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateSlider();
+    }
+
+    // --- EVENT LISTENERS ---
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+        if (!momentsPage.classList.contains('hidden')) {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        }
+    });
+
+    // Swipe Support
+    let touchStartX = 0;
+
+    document.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', e => {
+        const touchEndX = e.changedTouches[0].screenX;
+        if (!momentsPage.classList.contains('hidden')) {
+            if (touchStartX - touchEndX > 50) nextSlide();
+            if (touchEndX - touchStartX > 50) prevSlide();
+        }
+    });
 
 });
