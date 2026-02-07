@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background Elements -->
+    <div class="ambient-glow"></div>
+
+    <!-- PAGE 1: LANDING -->
+    <section id="landing-page">
+        <div class="glass-card">
+            <div class="content-wrapper">
+                <h1 class="title">
+                    <span class="line">HAPPY</span>
+                    <span class="line">VALENTINE’S DAY</span>
+                    <span class="line emoji">❤️</span>
+                </h1>
+
+                <p class="message-text">
+                    <span class="msg-line">Every moment with you</span>
+                    <span class="msg-line">means everything to me</span>
+                </p>
+
+                <p class="message-sub">
+                    <span class="msg-line">This is just a small part</span>
+                    <span class="msg-line">of our story</span>
+                </p>
+
+                <button id="continue-btn" class="glow-button">
+                    Continue Our Story <span class="arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 2: MOMENTS -->
+    <section id="moments-page" class="hidden">
+        <header class="gallery-header">
+            <h2>Our Moments</h2>
+        </header>
+
+        <div class="gallery-container">
+            <div class="polaroid-slider">
+                <!-- Polaroids will be injected here or hardcoded -->
+                <div class="polaroid-card active">
+                    <div class="frame">
+                        <img src="assets/moment1.png" alt="Moment 1">
+                        <div class="caption">The Beginning</div>
+                    </div>
+                </div>
+                <div class="polaroid-card">
+                    <div class="frame">
+                        <img src="assets/moment2.png" alt="Moment 2">
+                        <div class="caption">Adventures</div>
+                    </div>
+                </div>
+                <div class="polaroid-card">
+                    <div class="frame">
+                        <img src="assets/moment3.png" alt="Moment 3">
+                        <div class="caption">Laughter</div>
+                    </div>
+                </div>
+                <div class="polaroid-card">
+                    <div class="frame">
+                        <img src="assets/moment4.png" alt="Moment 4">
+                        <div class="caption">Quiet Times</div>
+                    </div>
+                </div>
+                <div class="polaroid-card">
+                    <div class="frame">
+                        <img src="assets/moment5.png" alt="Moment 5">
+                        <div class="caption">Silly Faces</div>
+                    </div>
+                </div>
+                <div class="polaroid-card">
+                    <div class="frame">
+                        <img src="assets/moment6.png" alt="Moment 6">
+                        <div class="caption">Forever to Go</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls removed as per request -->
+            <div class="slider-controls" style="display: none;"></div>
+
+        </div>
+    </section>
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
