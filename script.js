@@ -58,16 +58,14 @@ document.addEventListener("DOMContentLoaded", () => {
         // Update Slider State
         updateSlider();
 
-        // Start Auto Play
-        startAutoSlide();
+        // Manual Navigation: Click anywhere on the slider to go next
+        const sliderContainer = document.querySelector('.polaroid-slider');
+        sliderContainer.addEventListener('click', () => {
+            nextSlide();
+        });
     }
 
-    // --- AUTOMATIC SLIDESHOW ---
-    function startAutoSlide() {
-        setInterval(() => {
-            nextSlide();
-        }, 3000); // Change slide every 3 seconds
-    }
+    // --- MANUAL NAVIGATION ---
 
     function updateSlider() {
         polaroids.forEach((card, index) => {

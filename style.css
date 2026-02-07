@@ -234,6 +234,8 @@ section.hidden {
     width: 100%;
     position: relative;
     perspective: 1000px;
+    cursor: pointer;
+    /* Indicate clickable */
 }
 
 .polaroid-card {
