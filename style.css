@@ -1,13 +1,34 @@
 :root {
-    --bg-color: #050505;
-    --text-main: #ffffff;
-    --text-muted: #aaaaaa;
-    --accent-glow: rgba(255, 100, 120, 0.6);
+    --bg-color: #fff9c4;
+    /* Light Yellowish Cream */
+    --text-main: #2c2c2c;
+    /* Soft Black */
+    --text-muted: #666666;
+    /* Medium Grey */
+    --accent-glow: rgba(255, 100, 120, 0.3);
     --accent-solid: #ff6478;
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    /* Frosted White */
+    --glass-border: rgba(0, 0, 0, 0.05);
+    /* Default Fonts (Pages 3, 4, etc.) */
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Inter', sans-serif;
+}
+
+/* Scoped Fonts for Page 1 & 2 */
+#landing-page,
+#moments-page {
+    --font-serif: 'Montserrat', sans-serif;
+    --font-sans: 'Lato', sans-serif;
+}
+
+/* Scoped Fonts for Page 3 (Reasons) - Distinct Modern Style */
+#reason-page {
+    --font-serif: 'Poppins', sans-serif;
+    /* Headings */
+    --font-sans: 'Poppins', sans-serif;
+    /* Body Text (Clean & Geometric) */
+    --text-main: #333;
 }
 
 * {
@@ -29,6 +50,13 @@ body {
     align-items: center;
 }
 
+/* ... (Rest of CSS is unchanged until Game Page) ... */
+/* I will use a separate Replace call for removing Game Page styles to keep it clean, 
+   or just include the surrounding css if small enough. 
+   Actually, I can't target "rest of css". I'll stick to updating the font scoping here 
+   and do the cleanup in a separate chunk/step if needed, 
+   but for now I'll just do the font variables part. */
+
 /* Background Ambient Glow */
 .ambient-glow {
     position: fixed;
@@ -36,12 +64,12 @@ body {
     left: 50%;
     width: 60vw;
     height: 60vh;
-    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-    opacity: 0.15;
+    background: radial-gradient(circle, rgba(255, 180, 190, 0.3) 0%, transparent 70%);
+    opacity: 0.6;
     transform: translate(-50%, -50%);
     z-index: -1;
     pointer-events: none;
-    filter: blur(60px);
+    filter: blur(80px);
 }
 
 /* SECTIONS */
@@ -67,37 +95,54 @@ section.hidden {
 /* LANDING PAGE */
 #landing-page {
     z-index: 2;
-}
-
-.glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    padding: 4rem 3rem;
-    border-radius: 20px;
-    text-align: center;
-    max-width: 600px;
-    width: 90%;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     position: relative;
     overflow: hidden;
 }
 
-/* Subtle glowing border animation */
+/* Glass Card with Blurred Background Image */
+/* Glass Card */
+.glass-card {
+    position: relative;
+    /* Clean white tint */
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    padding: 4rem 3rem;
+    border-radius: 24px;
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(255, 180, 190, 0.2), 0 0 1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 1;
+}
+
+
+
+/* Subtle glowing border animation - ADJUSTED FOR LIGHT */
 .glass-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 20px;
-    padding: 1px;
-    background: linear-gradient(45deg, transparent, var(--accent-glow), transparent);
+    border-radius: 24px;
+    padding: 2px;
+    background: linear-gradient(45deg, transparent, rgba(255, 100, 120, 0.3), transparent);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    opacity: 0.5;
+    opacity: 0.7;
     animation: borderPulse 4s infinite linear;
+}
+
+/* Background Particles */
+.bg-particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 100, 120, 0.4);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .gallery-container {
@@ -125,11 +170,14 @@ section.hidden {
 
 .title {
     font-family: var(--font-serif);
-    font-size: 2.5rem;
-    font-weight: 400;
+    font-size: 3rem;
+    /* Adjusted for Montserrat */
+    font-weight: 700;
     margin-bottom: 2rem;
     letter-spacing: 0.05em;
     line-height: 1.2;
+    text-transform: uppercase;
+    /* Modern look */
 }
 
 .title .line {
@@ -168,12 +216,13 @@ section.hidden {
 
 /* BUTTON */
 .glow-button {
-    background: transparent;
+    background: #fff;
     color: var(--text-main);
-    border: 1px solid var(--glass-border);
-    padding: 14px 28px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 16px 32px;
     font-size: 1rem;
     font-family: var(--font-sans);
+    font-weight: 500;
     letter-spacing: 0.05em;
     cursor: pointer;
     border-radius: 50px;
@@ -183,12 +232,14 @@ section.hidden {
     opacity: 0;
     /* JS Fade in */
     transform: translateY(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .glow-button:hover {
-    background: rgba(255, 100, 120, 0.1);
+    background: #fff;
     border-color: var(--accent-solid);
-    box-shadow: 0 0 20px rgba(255, 100, 120, 0.3);
+    color: var(--accent-solid);
+    box-shadow: 0 10px 25px rgba(255, 100, 120, 0.15);
     transform: translateY(-2px) scale(1.02);
 }
 
@@ -205,7 +256,7 @@ section.hidden {
 /* MODERN CLASSIC BUTTON */
 .modern-classic-btn {
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--text-main);
     color: var(--text-main);
     padding: 15px 40px;
     font-family: var(--font-serif);
@@ -223,10 +274,10 @@ section.hidden {
 }
 
 .modern-classic-btn:hover {
-    background: #fff;
-    color: #000;
-    border-color: #fff;
-    box-shadow: 0 5px 25px rgba(255, 255, 255, 0.25);
+    background: var(--text-main);
+    color: #fff;
+    border-color: var(--text-main);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
 }
 
@@ -261,6 +312,8 @@ section.hidden {
     font-size: 3rem;
     font-weight: 400;
     letter-spacing: 0.05em;
+    position: relative;
+    z-index: 2;
 }
 
 .gallery-container {
@@ -358,6 +411,28 @@ section.hidden {
     align-items: center;
     opacity: 0;
     /* Fade in with page */
+}
+
+#secret-input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--text-muted);
+    /* Darker border for visibility */
+    color: var(--text-main);
+    /* Dark text */
+    font-size: 1.5rem;
+    padding: 10px;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    font-family: var(--font-main);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#secret-input:focus {
+    border-bottom-color: var(--accent-solid);
+    box-shadow: 0 4px 10px -2px rgba(255, 100, 120, 0.2);
 }
 
 .nav-btn {
@@ -541,13 +616,17 @@ section.hidden {
 
 .bg-collage img {
     position: absolute;
-    width: 150px;
-    height: 150px;
+    width: 350px;
+    /* even Bigger */
+    height: 350px;
+    /* even Bigger */
     object-fit: cover;
-    opacity: 0.15;
-    border-radius: 10px;
-    filter: grayscale(100%);
+    opacity: 0.4;
+    border-radius: 15px;
+    filter: grayscale(10%);
+    /* More color */
     transition: all 1s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .interactive-container {
@@ -627,91 +706,61 @@ section.hidden {
     .photo-frame {
         width: 240px;
     }
-}
 
-/* GAME PAGE */
-#game-page {
-    z-index: 1;
-}
-
-.game-card {
-    max-width: 800px;
-    width: 90%;
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
-
-#game-area {
-    flex: 1;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    border: 1px dashed rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    margin-top: 1rem;
-    cursor: crosshair;
-}
-
-.score-board {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    color: var(--text-main);
-    margin-bottom: 1rem;
-}
-
-.heart-target {
-    position: absolute;
-    /* font-size: 2rem; REMOVED, set in JS for randomness */
-    cursor: pointer;
-    user-select: none;
-    animation: floatUp linear forwards;
-    filter: drop-shadow(0 0 10px rgba(255, 100, 120, 0.5));
-    transition: transform 0.1s;
-}
-
-.heart-target:active {
-    transform: scale(0.9);
-}
-
-@keyframes floatUp {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
+    .glass-card {
+        padding: 1.5rem 1rem;
+        width: 90%;
+        border-radius: 16px;
     }
 
-    10% {
-        opacity: 1;
+    .title {
+        font-size: 1.5rem;
+        /* Even smaller for better fit */
+        margin-bottom: 1rem;
+        line-height: 1.2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Ensure centering */
+        gap: 0.5rem;
     }
 
-    90% {
-        opacity: 1;
+    .line {
+        margin-bottom: 0;
+        display: block;
     }
 
-    100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
+    .msg-line {
+        font-size: 1rem;
+    }
+
+    .polaroid-slider {
+        height: 350px;
+        /* Adjust height if needed */
+    }
+
+    .polaroid-card {
+        width: 200px;
+        padding: 10px 10px 40px 10px;
     }
 }
 
-.heart-pop {
+/* Floating Hearts */
+.floating-heart {
     position: absolute;
     pointer-events: none;
-    animation: popOut 0.8s ease-out forwards;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    z-index: 10;
+    z-index: 100;
+    /* Animation handled by GSAP */
 }
 
-@keyframes popOut {
+@keyframes floatUpFade {
     0% {
-        transform: scale(1) translateY(0);
+        transform: translateY(0) scale(1);
         opacity: 1;
     }
 
     100% {
-        transform: scale(1.5) translateY(-50px);
+        transform: translateY(-50px) scale(1.5);
         opacity: 0;
     }
 }

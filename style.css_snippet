@@ -1,0 +1,41 @@
+
+/* MUSIC CONTROL */
+.music-control {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.music-control:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(255, 100, 120, 0.3);
+}
+
+.music-control .icon {
+    font-size: 1.5rem;
+    animation: rotateMusic 4s linear infinite;
+    animation-play-state: paused;
+}
+
+.music-control.playing .icon {
+    animation-play-state: running;
+}
+
+@keyframes rotateMusic {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

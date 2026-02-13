@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
@@ -21,6 +21,8 @@
     <!-- Background -->
     <div class="ambient-glow"></div>
 
+
+
     <!-- PAGE 1: LANDING -->
     <section id="landing-page">
         <div class="glass-card">
@@ -28,6 +30,7 @@
                 <h1 class="title">
                     <span class="line">HAPPY</span>
                     <span class="line">VALENTINE’S DAY</span>
+                    <span class="line">Salimaaaa🫶</span>
                     <span class="line emoji">❤️</span>
                 </h1>
 
@@ -50,83 +53,67 @@
 
     <!-- PAGE 2: MOMENTS -->
     <section id="moments-page" class="hidden">
+
         <header class="gallery-header">
             <h2>Our Moments</h2>
+
         </header>
+        <h5>Tap to change</h5>
 
         <div class="gallery-container">
             <div class="polaroid-slider">
-
-                <div class="polaroid-card active">
+                <!-- Cards will be generated or managed by JS (keeping existing HTML for now) -->
+                <div class="polaroid-card active" data-index="0">
                     <div class="frame">
-                        <img src="assets/moment1.png" alt="Moment 1">
+                        <img src="assets/mm 1.jpeg" alt="Moment 1">
                         <div class="caption">The Beginning</div>
                     </div>
                 </div>
 
-                <div class="polaroid-card">
+                <!-- <div class="polaroid-card" data-index="1">
                     <div class="frame">
                         <img src="assets/moment2.png" alt="Moment 2">
                         <div class="caption">Adventures</div>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="polaroid-card">
-                    <div class="frame">
-                        <img src="assets/moment3.png" alt="Moment 3">
-                        <div class="caption">Laughter</div>
-                    </div>
-                </div>
 
-                <div class="polaroid-card">
+
+                <div class="polaroid-card" data-index="3">
                     <div class="frame">
-                        <img src="assets/moment4.png" alt="Moment 4">
+                        <img src="assets/mm 2.jpeg" alt="Moment 4">
                         <div class="caption">Quiet Times</div>
                     </div>
                 </div>
 
-                <div class="polaroid-card">
+
+                <div class="polaroid-card" data-index="2">
                     <div class="frame">
-                        <img src="assets/moment5.png" alt="Moment 5">
+                        <img src="assets/mm lauh.jpeg" alt="Moment 3">
+                        <div class="caption">Laughter</div>
+                    </div>
+                </div>
+
+                <div class="polaroid-card" data-index="4">
+                    <div class="frame">
+                        <img src="assets/mm 4.jpeg" alt="Moment 5">
                         <div class="caption">Silly Faces</div>
                     </div>
                 </div>
 
-                <div class="polaroid-card">
+                <!-- <div class="polaroid-card" data-index="5">
                     <div class="frame">
                         <img src="assets/moment6.png" alt="Moment 6">
-                        <div class="caption">Forever to Go</div>
+                        <div class="caption">Forever</div>
                     </div>
-                </div>
-
+                </div> -->
             </div>
 
             <!-- Hidden controls (intentionally) -->
             <div class="slider-controls" style="display:none;"></div>
 
             <button id="to-reason-btn" class="modern-classic-btn">
-                Next Chapter <span class="arrow">→</span>
-            </button>
-        </div>
-    </section>
-
-    <!-- PAGE 2.5: MINI GAME -->
-    <section id="game-page" style="display:none; opacity:0;">
-        <div class="glass-card game-card">
-            <h2 class="title">Wait! One Last Thing...</h2>
-            <p class="message-text">Catch <span style="color:var(--accent-solid); font-weight:bold;">10 Hearts</span> to
-                unlock the key to my heart! ❤️</p>
-
-            <div class="score-board">
-                Score: <span id="score">0</span> / 10
-            </div>
-
-            <div id="game-area">
-                <!-- Hearts will spawn here -->
-            </div>
-
-            <button id="game-continue-btn" class="modern-classic-btn" style="display:none; margin-top: 2rem;">
-                Unlock The Secret <span class="arrow">🔓</span>
+                Move to next <span class="arrow">→</span>
             </button>
         </div>
     </section>
@@ -135,19 +122,19 @@
     <section id="reason-page" style="display:none; opacity:0;">
         <!-- Background Scatter -->
         <div class="bg-collage">
-            <img src="assets/moment1.png" alt="" style="top:10%; left:10%; transform: rotate(-15deg);">
-            <img src="assets/moment2.png" alt="" style="top:20%; right:15%; transform: rotate(10deg);">
-            <img src="assets/moment3.png" alt="" style="bottom:15%; left:20%; transform: rotate(-5deg);">
-            <img src="assets/moment4.png" alt="" style="bottom:25%; right:10%; transform: rotate(15deg);">
-            <img src="assets/moment5.png" alt="" style="top:50%; left:5%; transform: rotate(20deg);">
-            <img src="assets/moment6.png" alt="" style="top:60%; right:5%; transform: rotate(-10deg);">
+            <img src="assets/6.jpeg" alt="" style="top:10%; left:10%; transform: rotate(-15deg);">
+            <img src="assets/1.jpeg" alt="" style="top:20%; right:15%; transform: rotate(10deg);">
+            <img src="assets/2.jpeg" alt="" style="bottom:15%; left:20%; transform: rotate(-5deg);">
+            <img src="assets/3.jpeg" alt="" style="bottom:25%; right:10%; transform: rotate(15deg);">
+            <img src="assets/4.jpeg" alt="" style="top:50%; left:5%; transform: rotate(20deg);">
+            <img src="assets/5.jpeg" alt="" style="top:60%; right:5%; transform: rotate(-10deg);">
         </div>
 
         <div class="interactive-container">
             <h2 class="title">Why I Like You...</h2>
 
             <div class="photo-frame" id="photo-frame">
-                <img id="active-photo" src="assets/moment1.png" alt="Us">
+                <img id="active-photo" src="assets/1.jpeg" alt="Us">
                 <div class="hint">Tap to see why ❤️</div>
             </div>
 
